@@ -1,11 +1,10 @@
 "use strict";
 
-// Helper function
+// Helper function to change text content
 const changeText = function (element, message) {
   document.querySelector(element).textContent = message;
 };
 
-// Generates random number between 1 and upper limit
 const upperLimit = 10;
 let guessesRemaining = 10;
 let guessCount = 0;
@@ -19,7 +18,7 @@ document.querySelector(".check").addEventListener("click", function () {
 
   // Only executes with remaining guesses
   if (guessesRemaining) {
-    // When there is no input
+    // When no input
     if (!guess) {
       changeText(".message", "No number!");
     }
@@ -35,6 +34,7 @@ document.querySelector(".check").addEventListener("click", function () {
         changeText(".remaining", guessesRemaining);
         changeText(".message", "You lost the game.");
 
+        // Losing style
         changeText(".number", secretNumber);
         document.querySelector("body").style.backgroundColor = "#b80f0a";
         document.querySelector(".number").style.width = "30rem";
@@ -46,9 +46,10 @@ document.querySelector(".check").addEventListener("click", function () {
     else {
       guessesRemaining--;
       changeText(".remaining", guessesRemaining);
-      guessesRemaining = 0; // Stop game functionality
       guessCount++;
+      guessesRemaining = 0; // Stop game functionality
 
+      // Update high score
       if (guessCount <= highScore) {
         highScore = guessCount;
         if (highScore == 1) {
@@ -58,6 +59,7 @@ document.querySelector(".check").addEventListener("click", function () {
         }
       }
 
+      // Winning style
       changeText(".message", "Correct!");
       changeText(".number", secretNumber);
       document.querySelector("body").style.backgroundColor = "#60b347";
@@ -66,6 +68,7 @@ document.querySelector(".check").addEventListener("click", function () {
   }
 });
 
+// Reset game
 document.querySelector(".again").addEventListener("click", function () {
   guessesRemaining = upperLimit;
   guessCount = 0;
