@@ -1,9 +1,11 @@
 "use strict";
 
 // Generates random number between 1 and upper limit
-const upperLimit = 50;
-const guessesRemaining = 10;
+const upperLimit = 10;
+let guessesRemaining = 10;
+let guessCount = 0;
 document.querySelector(".limit").textContent = upperLimit;
+document.querySelector(".remaining").textContent = guessesRemaining;
 let secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
 // let score = upperLimit;
 let highScore = upperLimit;
@@ -15,7 +17,7 @@ document.querySelector(".check").addEventListener("click", function () {
   if (!guess) {
     document.querySelector(".message").textContent = "No number!";
   }
-
+  //
   // When guess is too high
   else if (guess > secretNumber) {
     if (guessesRemaining > 1) {
@@ -26,6 +28,7 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".remaining").textContent = guessesRemaining;
       document.querySelector(".message").textContent = "You lost the game.";
     }
+    guessCount++;
   }
 
   // When guess is too low
@@ -38,14 +41,15 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".remaining").textContent = guessesRemaining;
       document.querySelector(".message").textContent = "You lost the game.";
     }
+    guessCount++;
   }
 
   // When guess is correct
   else {
-    const numberOfGuesses = upperLimit - guessesRemaining + 1;
+    guessCount++;
 
-    if (numberOfGuesses <= highScore) {
-      highScore = numberOfGuesses;
+    if (guessCount <= highScore) {
+      highScore = guessCount;
       if (highScore == 1) {
         document.querySelector(".highscore").textContent = `${highScore} guess`;
       } else {
@@ -64,11 +68,12 @@ document.querySelector(".check").addEventListener("click", function () {
 
 document.querySelector(".again").addEventListener("click", function () {
   guessesRemaining = upperLimit;
+  guessCount = 0;
   document.querySelector(".remaining").textContent = guessesRemaining;
   secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
   document.querySelector(".number").textContent = "?";
   document.querySelector(".message").textContent = "Start guessing...";
   document.querySelector(".guess").value = "";
-  document.querySelector("body").style.backgroundColor = "#333";
+  document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".number").style.width = "15rem";
 });
