@@ -2,7 +2,7 @@
 
 // Generates random number between 1 and upper limit
 const upperLimit = 20;
-const secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
+let secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
 let score = upperLimit;
 
 document.querySelector(".check").addEventListener("click", function () {
@@ -46,4 +46,13 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
   }
+});
+
+document.querySelector(".again").addEventListener("click", function () {
+  score = upperLimit;
+  document.querySelector(".score").textContent = score;
+  document.querySelector(".number").textContent = "?";
+  document.querySelector(".message").textContent = "Start guessing...";
+  document.querySelector("body").style.backgroundColor = "#333";
+  document.querySelector(".number").style.width = "15rem";
 });
