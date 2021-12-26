@@ -6,7 +6,7 @@ let secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
 let score = upperLimit;
 
 document.querySelector(".check").addEventListener("click", function () {
-  const guess = Number(document.querySelector(".guess").value);
+  let guess = Number(document.querySelector(".guess").value);
 
   // When there is no input
   if (!guess) {
@@ -51,8 +51,10 @@ document.querySelector(".check").addEventListener("click", function () {
 document.querySelector(".again").addEventListener("click", function () {
   score = upperLimit;
   document.querySelector(".score").textContent = score;
+  secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
   document.querySelector(".number").textContent = "?";
   document.querySelector(".message").textContent = "Start guessing...";
+  document.querySelector(".guess").value = "";
   document.querySelector("body").style.backgroundColor = "#333";
   document.querySelector(".number").style.width = "15rem";
 });
