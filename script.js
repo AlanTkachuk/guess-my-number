@@ -13,34 +13,18 @@ let highScore = upperLimit;
 document.querySelector(".check").addEventListener("click", function () {
   let guess = Number(document.querySelector(".guess").value);
 
-  // When there is no input
+  // Only executes with remaining guesses
   if (guessesRemaining) {
+    // When there is no input
     if (!guess) {
       document.querySelector(".message").textContent = "No number!";
     }
-    //
-    // When guess is too high
-    else if (guess > secretNumber) {
-      if (guessesRemaining > 1) {
-        document.querySelector(".message").textContent = "Too high!";
-        guessesRemaining--;
-        document.querySelector(".remaining").textContent = guessesRemaining;
-      } else if (guessesRemaining > 0) {
-        guessesRemaining--;
-        document.querySelector(".remaining").textContent = guessesRemaining;
-        document.querySelector(".message").textContent = "You lost the game.";
 
-        document.querySelector(".number").textContent = secretNumber;
-        document.querySelector("body").style.backgroundColor = "#b80f0a";
-        document.querySelector(".number").style.width = "30rem";
-      }
-      guessCount++;
-    }
-
-    // When guess is too low
-    else if (guess < secretNumber) {
+    // When guess is incorrect
+    else if (guess != secretNumber) {
       if (guessesRemaining > 1) {
-        document.querySelector(".message").textContent = "Too low!";
+        document.querySelector(".message").textContent =
+          guess > secretNumber ? "Too high!" : "Too low!";
         guessesRemaining--;
         document.querySelector(".remaining").textContent = guessesRemaining;
       } else if (guessesRemaining > 0) {
