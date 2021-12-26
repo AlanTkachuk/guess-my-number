@@ -1,9 +1,11 @@
 "use strict";
 
 // Generates random number between 1 and upper limit
-const upperLimit = 20;
+const upperLimit = 50;
+const guessesRemaining = 10;
+document.querySelector(".limit").textContent = upperLimit;
 let secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
-let score = upperLimit;
+// let score = upperLimit;
 let highScore = upperLimit;
 
 document.querySelector(".check").addEventListener("click", function () {
@@ -16,31 +18,31 @@ document.querySelector(".check").addEventListener("click", function () {
 
   // When guess is too high
   else if (guess > secretNumber) {
-    if (score > 1) {
+    if (guessesRemaining > 1) {
       document.querySelector(".message").textContent = "Too high!";
-      score--;
-      document.querySelector(".score").textContent = score;
+      guessesRemaining--;
+      document.querySelector(".remaining").textContent = guessesRemaining;
     } else {
-      document.querySelector(".score").textContent = score;
+      document.querySelector(".remaining").textContent = guessesRemaining;
       document.querySelector(".message").textContent = "You lost the game.";
     }
   }
 
   // When guess is too low
   else if (guess < secretNumber) {
-    if (score > 1) {
+    if (guessesRemaining > 1) {
       document.querySelector(".message").textContent = "Too low!";
-      score--;
-      document.querySelector(".score").textContent = score;
+      guessesRemaining--;
+      document.querySelector(".remaining").textContent = guessesRemaining;
     } else {
-      document.querySelector(".score").textContent = score;
+      document.querySelector(".remaining").textContent = guessesRemaining;
       document.querySelector(".message").textContent = "You lost the game.";
     }
   }
 
   // When guess is correct
   else {
-    const numberOfGuesses = upperLimit - score + 1;
+    const numberOfGuesses = upperLimit - guessesRemaining + 1;
 
     if (numberOfGuesses <= highScore) {
       highScore = numberOfGuesses;
@@ -61,8 +63,8 @@ document.querySelector(".check").addEventListener("click", function () {
 });
 
 document.querySelector(".again").addEventListener("click", function () {
-  score = upperLimit;
-  document.querySelector(".score").textContent = score;
+  guessesRemaining = upperLimit;
+  document.querySelector(".remaining").textContent = guessesRemaining;
   secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
   document.querySelector(".number").textContent = "?";
   document.querySelector(".message").textContent = "Start guessing...";
