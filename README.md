@@ -24,8 +24,13 @@ If you run out of guesses, you lose!
 ## Design & Testing
 - Chrome dev tools debugger
 
-## What I Practiced
+## Skills Practiced
 - DOM manipulation
 - Event listeners/handlers
 - Basic code refactoring (DRY)
 - Implementing random numbers
+
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
