@@ -4,7 +4,7 @@
 const upperLimit = 20;
 const secretNumber = Math.trunc(Math.random() * upperLimit) + 1;
 let score = upperLimit;
-document.querySelector(".number").textContent = secretNumber;
+
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
 
@@ -42,6 +42,7 @@ document.querySelector(".check").addEventListener("click", function () {
   // When guess is correct
   else {
     document.querySelector(".message").textContent = "Correct!";
+    document.querySelector(".number").textContent = secretNumber;
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
   }
