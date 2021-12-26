@@ -21,7 +21,6 @@ document.querySelector(".check").addEventListener("click", function () {
       score--;
       document.querySelector(".score").textContent = score;
     } else {
-      score--;
       document.querySelector(".score").textContent = score;
       document.querySelector(".message").textContent = "You lost the game.";
     }
@@ -34,7 +33,6 @@ document.querySelector(".check").addEventListener("click", function () {
       score--;
       document.querySelector(".score").textContent = score;
     } else {
-      score--;
       document.querySelector(".score").textContent = score;
       document.querySelector(".message").textContent = "You lost the game.";
     }
