@@ -60,7 +60,7 @@ document.querySelector(".check").addEventListener("click", function () {
       }
 
       // Winning style
-      changeText(".message", "Correct!");
+      changeText(".message", "You win!");
       changeText(".number", secretNumber);
       document.querySelector("body").style.backgroundColor = "#60b347";
       document.querySelector(".number").style.width = "30rem";
